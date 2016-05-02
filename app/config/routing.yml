@@ -1,3 +1,7 @@
+stare_up_main:
+    resource: "@StareUpMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
