@@ -5,13 +5,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Stareup.com | Share, start, rent, buy, sell, resources, assets etc.{% endblock %}</title>
+        <title>{% block title %}Stareup.com | One stop destination to Rent, Buy, Sell resources that your dream startup may need.{% endblock %}</title>
         <link rel="manifest" href="/manifest.json">
-        <meta name="description" content="Stareup.com. India's No.1 sharing portal for Startups. Succeeding without sharing is not what it takes to become the next big thing. We provide a simple solution to share resources and save the crucial capital for your dream startup.">
+        <meta name="description" content="Stareup.com. India's No.1 sharing portal for Startups. Succeeding without sharing is not what it takes to become the next big thing. We provide a simple solution to share / rent / buy / sell resources and save the crucial capital.">
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/h.png') }}" />
         <!--[if lte IE 8]><script src="{{ asset('js/ie/html5shiv.js') }}"></script><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
     </head>
@@ -21,38 +21,43 @@
 
             <!-- Header -->
                 <header id="header" class="alt">
-                    <h1><a href="index.html">StareUp</a> friends of starups</h1>
+                    <h1>
+                        <img src="{{ asset('images/wLogo.png') }}" style="border-bottom: 2px solid" height="30px" width="30px" />
+                        <a href="/">StareUp</a> <span>because Sharing is a good gesture.</span>
+                    </h1>
                     <nav id="nav">
                         <ul>
                             <li><a href="/">Home</a></li>
                             <li>
-                                <a href="#" class="icon fa-angle-down">Explore</a>
+                                <a href="#">Explore  <span class="icon fa-angle-down" style="margin-left: 7px;"></span></a>
                                 <ul>
-                                    <li><a href="generic.html">Vision</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="elements.html">About us</a></li>
                                     <li>
-                                        <a href="#">More Tools</a>
+                                        <a href="#"> + Tools</a>
                                         <ul>
                                             <li><a href="#">Social marketing</a></li>
-                                            <li><a href="#">Catchy tagline</a></li>
-                                            <li><a href="#">Free OTP</a></li>
+                                            <li><a href="#">Catchy taglines</a></li>
+                                            <li><a href="#">Free OTP solution</a></li>
                                         </ul>
                                     </li>
+                                    <li><a href="generic.html">How It Works ?</a></li>
+                                    <li><a href="generic.html">Vision</a></li>
+                                    <li><a href="generic.html">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#" class="button">Sign Up</a></li>
+                            <li><a href="/post" class="button btnUnderline">Post now</a></li>
+                            <li><a href="#">Sign Up</a></li>
                         </ul>
                     </nav>
                 </header>
 
             <!-- Banner -->
                 <section id="banner">
-                    <h2>Stareup</h2>
-                    <p>Starting with the help of sharing is the next big thing.</p>
+                    <h2>StareUp</h2>
+                    <p>Start + Share to stare up your next BIG thing</p>
                     <ul class="actions">
                         <li><a href="#" class="button special">Sign Up</a></li>
-                        <li><a href="#" class="button">How it works?</a></li>
+                        <li><a href="#howitworks" class="button">How it works?</a></li>
                     </ul>
                 </section>
 
@@ -61,16 +66,16 @@
 
                     <section class="box special">
                         <header class="major">
-                            <h2>Introducing the ultimate mobile app
+                            <h2>Introducing the ultimate mobile web app
                             <br />
-                            for doing stuff with your phone</h2>
-                            <p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
-                            adipiscing nunc adipiscing. Condimentum turpis massa.</p>
+                            to speed up your resource sharing.</h2>
+                            <p>No installation, no updation, Just add this to your homescreen<br />
+                            and you are ready to buy / sell / rent any resources that startups need on the go.</p>
                         </header>
                         <span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
                     </section>
 
-                    <section class="box special features">
+                    <section class="box special features" id='howitworks'>
                         <div class="features-row">
                             <section>
                                 <span class="icon major fa-bolt accent2"></span>
@@ -156,7 +161,7 @@
                         <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
                     </ul>
                     <ul class="copyright">
-                        <li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                        <li>&copy; <a href="/">StareUp</a> Inc. All rights reserved.</li>
                     </ul>
                 </footer>
 
