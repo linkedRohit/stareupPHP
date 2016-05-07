@@ -1,3 +1,11 @@
 stare_up_main_homepage:
     path:     /
     defaults: { _controller: StareUpMainBundle:Default:index }
+
+stare_up_buyer_homepage:
+    path:     /buyer
+    defaults: { _controller: StareUpMainBundle:Buyer:index }
+
+stare_up_seller_homepage:
+    path:     /seller
+    defaults: { _controller: StareUpMainBundle:Seller:index }
