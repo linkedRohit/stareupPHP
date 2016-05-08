@@ -3238,6 +3238,107 @@
 			color: rgba(255, 255, 255, 0.75) !important;
 		}
 
+
+
+ /*-------------------------------------*/
+    
+    .form-wrapper {
+    	width: 60%;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        height: 50px;
+        text-align: center;
+        margin-left: auto;
+    	margin-right: auto;
+    }
+    
+    .form-wrapper input {
+        width: 40%;
+        float: left;    
+        border: 0;
+        background: #eee;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;   
+        height: 50px;   
+        border-right: 1px solid #aaa;
+    }
+    
+    .form-wrapper input:focus {
+        outline: 0;
+        background: #fff;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+    
+    .form-wrapper input::-webkit-input-placeholder {
+       color: #999;
+       font-weight: normal;
+       font-style: italic;
+    }
+    
+    .form-wrapper input:-moz-placeholder {
+        color: #999;
+        font-weight: normal;
+        font-style: italic;
+    }
+    
+    .form-wrapper input:-ms-input-placeholder {
+        color: #999;
+        font-weight: normal;
+    }    
+    
+    .form-wrapper button {
+		overflow: visible;
+        position: relative;
+        float: right;
+        border: 0;
+        cursor: pointer;
+        width: 20%;
+        font-weight: bold;
+        color: #fff;
+        text-transform: uppercase;
+        background: #d83c3c;
+        -moz-border-radius: 0 3px 3px 0;
+        -webkit-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;      
+        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
+        height: 50px;
+    }   
+      
+    .form-wrapper button:hover{		
+        background: #e54040;
+    }	
+      
+    .form-wrapper button:active,
+    .form-wrapper button:focus{   
+        background: #c42f2f;    
+    }
+    
+    .form-wrapper button:before {
+        content: '';
+        position: absolute;
+        border-width: 8px 8px 8px 0;
+        border-style: solid solid solid none;
+        border-color: transparent #d83c3c transparent;
+        left: -6px;
+    }
+    
+    .form-wrapper button:hover:before{
+        border-right-color: #e54040;
+    }
+    
+    .form-wrapper button:focus:before{
+        border-right-color: #c42f2f;
+    }    
+    
+    .form-wrapper button::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
 /* Wide */
 
 	@media screen and (max-width: 1680px) {
@@ -3767,7 +3868,19 @@
     			width: 100%;
     		}
 
-	}
+    		.form-wrapper input {
+		        width: 100%;
+		    	margin-bottom: 10px;
+		    }
+
+		    .form-wrapper button {
+		    	float: none;
+		    	width: 100px;
+		    }
+		    .form-wrapper button:before {
+		        border-style: none none none none;
+		    }
+		}
 
 #header span {
 	font-weight: 500;
@@ -3775,106 +3888,56 @@
 	font-size: 15px;
 }
 
+/* Overlay when Modal is open */
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
 
- /*-------------------------------------*/
-    
+/* Modal box or Popup box */
+.popupContainer{
+	position:absolute;
+	width:330px;
+	height: auto;
+	left:45%;
+	top:80px;
+	background: #FFF;
+}
 
-    /*-------------------------------------*/	
-    
-    .form-wrapper {
-    	width: 60%;
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        height: 50px;
-        text-align: center;
-        margin-left: auto;
-    	margin-right: auto;
-    }
-    
-    .form-wrapper input {
-        width: 26%;
-        float: left;    
-        border: 0;
-        background: #eee;
-        -moz-border-radius: 0px;
-        -webkit-border-radius: 0px;
-        border-radius: 0px;   
-        height: 50px;   
-        border-right: 1px solid #aaa;
-    }
-    
-    .form-wrapper input:focus {
-        outline: 0;
-        background: #fff;
-        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-    }
-    
-    .form-wrapper input::-webkit-input-placeholder {
-       color: #999;
-       font-weight: normal;
-       font-style: italic;
-    }
-    
-    .form-wrapper input:-moz-placeholder {
-        color: #999;
-        font-weight: normal;
-        font-style: italic;
-    }
-    
-    .form-wrapper input:-ms-input-placeholder {
-        color: #999;
-        font-weight: normal;
-    }    
-    
-    .form-wrapper button {
-		overflow: visible;
-        position: relative;
-        float: right;
-        border: 0;
-        cursor: pointer;
-        width: 20%;
-        font-weight: bold;
-        color: #fff;
-        text-transform: uppercase;
-        background: #d83c3c;
-        -moz-border-radius: 0 3px 3px 0;
-        -webkit-border-radius: 0 3px 3px 0;
-        border-radius: 0 3px 3px 0;      
-        text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-        height: 50px;
-    }   
-      
-    .form-wrapper button:hover{		
-        background: #e54040;
-    }	
-      
-    .form-wrapper button:active,
-    .form-wrapper button:focus{   
-        background: #c42f2f;    
-    }
-    
-    .form-wrapper button:before {
-        content: '';
-        position: absolute;
-        border-width: 8px 8px 8px 0;
-        border-style: solid solid solid none;
-        border-color: transparent #d83c3c transparent;
-        top: 12px;
-        left: -6px;
-    }
-    
-    .form-wrapper button:hover:before{
-        border-right-color: #e54040;
-    }
-    
-    .form-wrapper button:focus:before{
-        border-right-color: #c42f2f;
-    }    
-    
-    .form-wrapper button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
-    }
+
+/* Popup Styles*/
+.popupHeader  {
+    font-size: 16px;
+     text-transform:  uppercase;
+}
+
+.popupHeader  {
+    background: #F4F4F2;
+     position: relative;
+     padding: 10px 20px;
+     border-bottom: 1px solid #DDD;
+     font-weight: bold;
+}
+
+.popupHeader .modal_close  {
+    position:  absolute;
+     right:  0;
+     top: 0;
+     padding: 10px 15px;
+     background: #E4E4E2;
+     cursor:  pointer;
+     color: #aaa;
+     font-size: 16px;
+}
+
+.popupBody  {
+    padding: 20px;
+}
+
+
