@@ -5,6 +5,12 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script type="text/javascript" src="//platform.linkedin.com/in.js">
+            api_key:   75gic18iaysxzq
+            onLoad:    [ONLOAD]
+            authorize: true
+            lang:      en_US
+        </script>
     </head>
     <body>
         {% block body %}{% endblock %}
