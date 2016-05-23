@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new StareUp\Main\Bundle\StareUpMainBundle(),
-	    new Itlized\Bundle\SocialBundle\ItlizedSocialBundle(),
+//	    new Itlized\Bundle\SocialBundle\ItlizedSocialBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
