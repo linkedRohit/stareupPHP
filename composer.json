@@ -26,8 +26,8 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "*",
         "sensio/framework-extra-bundle": "*",
-        "incenteev/composer-parameter-handler": "^2.0",
-        "itlized/social": "~2.1"
+        "incenteev/composer-parameter-handler": "^2.0"
+//        "itlized/social": "~2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "*",

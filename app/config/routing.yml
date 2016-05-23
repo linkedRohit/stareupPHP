@@ -6,6 +6,6 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-itlized_social:
-    resource: "@ItlizedSocialBundle/Resources/config/routing.yml"
-    prefix:   /
+#itlized_social:
+#    resource: "@ItlizedSocialBundle/Resources/config/routing.yml"
+#    prefix:   /
