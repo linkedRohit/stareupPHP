@@ -16,9 +16,9 @@
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
 
          <script type="text/javascript" src="http://platform.linkedin.com/in.js">
-                 
-                api_key: '75gic18iaysxzq';
-                 
+
+                api_key: 75gic18iaysxzq;
+
                 scope: r_network,r_emailaddress,r_fullprofile,r_basicprofile,r_contactinfo;
 
                 authorize: true;
@@ -32,17 +32,23 @@
                     IN.API.Profile("me").result(ShowProfileData);
                 }
 
+                function liAuth(){
+                   IN.User.authorize(function(){
+                       callback();
+                   });
+                }
+
                 function ShowProfileData(profiles) {
                     var member = profiles.values[0];
                     var id=member.id;
-                    var firstName=member.firstName; 
-                    var lastName=member.lastName; 
-                    var photo=member.pictureUrl; 
-                    var headline=member.headline; 
+                    var firstName=member.firstName;
+                    var lastName=member.lastName;
+                    var photo=member.pictureUrl;
+                    var headline=member.headline;
 
                     //use information captured above
                 }
-                 
+
             </script>
     </head>
     {% block body %}
@@ -213,15 +219,15 @@
                     <center>
                         We believe in saving the precious time of yours, so blazing fast connect is here.
                         <script type="in/Login"></script>
-                        <a href="" id="lInButton"><img src="images/inSignUp.png" width="100%;"/></a>
-                        <a href="" id="gButton"><img src="images/gSignUp.png" width="100%;"/></a>
+                        <a onclick="liAuth()" id="lInButton"><img src="images/inSignUp.png" width="100%;"/></a>
+                        <!--<a href="" id="gButton"><img src="images/gSignUp.png" width="100%;"/></a>
                         <a href="" id="fButton"><img src="images/fSignUp.png" width="100%;"/></a>
-                        <a href="" id="tButton"><img src="images/tSignUp.png" width="100%;"/></a>
+                        <a href="" id="tButton"><img src="images/tSignUp.png" width="100%;"/></a>-->
                     </center>
                     </section>
                 </div>
 
-                
+
                 <!-- Till here -->
 
         </div>
@@ -239,7 +245,7 @@
             <script src="{{ asset('js/main.js') }}"></script>
             <script src="{{ asset('js/jquery.leanModal.min.js') }}"></script>
 
-           
+
         {% endblock %}
 
     </body>

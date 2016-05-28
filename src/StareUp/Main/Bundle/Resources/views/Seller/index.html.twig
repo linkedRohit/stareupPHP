@@ -1,1 +1,17 @@
-Sellre
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('css/oldmain.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

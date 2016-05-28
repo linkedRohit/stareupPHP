@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Stareup.com | One stop destination to Buy, Sell, Rent, Share resources that your dream startup may need.{% endblock %}</title>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="description" content="Stareup.com. India's No.1 sharing portal for Startups. Succeeding without sharing is not what it takes to become the next big thing. We provide a simple solution to buy / sell / rent / share resources and save the crucial capital.">
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/h.png') }}" />
+        <!--[if lte IE 8]><script src="{{ asset('js/ie/html5shiv.js') }}"></script><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
+        <script type="text/javascript" src="//platform.linkedin.com/in.js">
+            api_key:   '75gic18iaysxzq'
+            authorize: true
+        </script>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

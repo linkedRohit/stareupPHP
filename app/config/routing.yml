@@ -3,9 +3,5 @@ stare_up_main:
     prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@StareUpMainBundle/Controller/"
     type:     annotation
-
-#itlized_social:
-#    resource: "@ItlizedSocialBundle/Resources/config/routing.yml"
-#    prefix:   /
