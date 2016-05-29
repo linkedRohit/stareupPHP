@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -12,14 +14,136 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('images/h.png') }}" />
         <!--[if lte IE 8]><script src="{{ asset('js/ie/html5shiv.js') }}"></script><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
-        <script type="text/javascript" src="//platform.linkedin.com/in.js">
-            api_key:   '75gic18iaysxzq'
-            authorize: true
-        </script>
-    </head>
-    <body>
-        {% block body %}{% endblock %}
 
-        {% block javascripts %}{% endblock %}
+         <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+
+                api_key: 75gic18iaysxzq;
+
+                scope: r_network,r_emailaddress,r_fullprofile,r_basicprofile,r_contactinfo;
+
+                authorize: true;
+                onLoad: OnLinkedInFrameworkLoad;
+
+                function OnLinkedInFrameworkLoad() {
+                  IN.Event.on(IN, "auth", OnLinkedInAuth);
+                }
+
+                function OnLinkedInAuth() {
+                    IN.API.Profile("me").result(ShowProfileData);
+                }
+
+                function liAuth(){
+                   IN.User.authorize(function(){
+                       callback();
+                   });
+                }
+
+                function ShowProfileData(profiles) {
+                    var member = profiles.values[0];
+                    var id=member.id;
+                    var firstName=member.firstName;
+                    var lastName=member.lastName;
+                    var photo=member.pictureUrl;
+                    var headline=member.headline;
+
+                    //use information captured above
+                }
+
+            </script>
+    </head>
+    {% block body %}
+    <body class="landing">
+        <div id="page-wrapper">
+
+            <!-- Header -->
+                <header id="header" class="alt">
+                    <h1>
+                        <img src="{{ asset('images/wLogo.png') }}" style="border-bottom: 2px solid" height="30px" width="30px" />
+                        <a href="/">StareUp</a> <span>because Sharing is a good gesture.</span>
+                    </h1>
+                    <nav id="nav">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li>
+                                <a href="#">Explore  <span class="icon fa-angle-down" style="margin-left: 7px;"></span></a>
+                                <ul>
+                                    <li>
+                                        <a href="#"> + Tools</a>
+                                        <ul>
+                                            <li><a href="#">Social marketing</a></li>
+                                            <li><a href="#">Catchy taglines</a></li>
+                                            <li><a href="#">Free OTP solution</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/#features">Features</a></li>
+                                    <li><a href="generic.html">Vision</a></li>
+                                    <li><a href="generic.html">Privacy Policy</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/seller/post" class="button btnUnderline">Post now</a></li>
+                            <li>
+                                <a id="modal_trigger" href="#modal">Sign Up</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+
+            {% block pageContent %}
+            {% endblock %}
+            <!-- Footer -->
+                <footer id="footer">
+                    <ul class="icons">
+                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                        <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+                    </ul>
+                    <ul class="copyright">
+                        <li>&copy; <a href="/">StareUp</a> Inc. All rights reserved.</li>
+                    </ul>
+                </footer>
+
+
+                <!-- Get started modal -->
+
+                <div id="modal" class="popupContainer" style="display:none;">
+                    <header class="popupHeader">
+                        <span class="header_title">Connect with us</span>
+                        <span class="modal_close"><i class="fa fa-times"></i></span>
+                    </header>
+
+                    <section class="popupBody">
+                    <center>
+                        We believe in saving the precious time of yours, so blazing fast connect is here.
+                        <script type="in/Login"></script>
+                        <a onclick="liAuth()" id="lInButton"><img src="/images/inSignUp.png" width="100%;"/></a>
+                        <!--<a href="" id="gButton"><img src="images/gSignUp.png" width="100%;"/></a>
+                        <a href="" id="fButton"><img src="images/fSignUp.png" width="100%;"/></a>
+                        <a href="" id="tButton"><img src="images/tSignUp.png" width="100%;"/></a>-->
+                    </center>
+                    </section>
+                </div>
+
+
+                <!-- Till here -->
+
+        </div>
+
+        {% endblock %}
+
+        {% block javascripts %}
+        <!-- Scripts -->
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.dropotron.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.scrollgress.min.js') }}"></script>
+            <script src="{{ asset('js/skel.min.js') }}"></script>
+            <script src="{{ asset('/js/util.js') }}"></script>
+            <!--[if lte IE 8]><script src="{{ asset('js/ie/respond.min.js') }}"></script><![endif]-->
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script src="{{ asset('js/jquery.leanModal.min.js') }}"></script>
+
+
+        {% endblock %}
+
     </body>
 </html>

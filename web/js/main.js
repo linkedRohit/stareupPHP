@@ -77,9 +77,7 @@
 		// If the header is using "alt" styling and #banner is present, use scrollwatch
 		// to revert it back to normal styling once the user scrolls past the banner.
 		// Note: This is disabled on mobile devices.
-			if (!skel.vars.mobile
-			&&	$header.hasClass('alt')
-			&&	$banner.length > 0) {
+			if (!skel.vars.mobile && $header.hasClass('alt') &&	$banner.length > 0) {
 
 				$window.on('load', function() {
 
@@ -92,7 +90,7 @@
 					});
 
 					$("#modal_trigger").leanModal({top : 100, overlay : 0.6, closeButton: ".modal_close" });
-					
+
 				});
 
 			}

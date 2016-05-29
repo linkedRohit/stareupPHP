@@ -1,0 +1,70 @@
+
+.sellerContainer {
+  background: #6E89A5;
+}
+
+.bkg {
+    color: #555;
+    background: rgba(104, 119, 151, 0.24);
+}
+
+.bkg2 {
+    color: #ddd;
+    background: rgba(104, 119, 151, 0.24);
+}
+
+.sellingForm {
+  border-right: 1px solid #e2e2e2;
+  padding : 10px 100px;
+  color: #555;
+}
+
+.sellingForm input, .sellingForm textarea, .sellingForm select {
+  margin: 10px;
+}
+
+.sellingTips {
+  float:right;
+  border-left: 1px solid #aaa;
+}
+
+.sellingTips ul{
+  margin-top: 20px;
+  padding: 10px;
+  text-align: left;
+}
+
+.sellingTips li{
+  margin-top : 10px;
+}
+
+@media screen and (max-width: 1680px) {
+}
+
+@media screen and (max-width: 1280px) {
+}
+
+@media screen and (max-width: 980px) {
+}
+
+@media screen and (max-width: 840px) {
+}
+
+@media screen and (max-width: 736px) {
+}
+
+@media screen and (max-width: 480px) {
+  .sellingForm {
+    border: 0;
+    padding: 0 10px;
+  }
+
+  .sellingTips {
+    margin-top: 50px;
+  }
+}
+
+#tips li {
+  margin-top: 15px;
+  text-align: left;
+}
