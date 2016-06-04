@@ -98,3 +98,12 @@
 	});
 
 })(jQuery);
+
+
+function hideLoader() {
+
+}
+
+function showLoader() {
+
+}

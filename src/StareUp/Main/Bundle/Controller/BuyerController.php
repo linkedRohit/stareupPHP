@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * @config\Route("/buyer")
  */
-class BuyerController extends Controller
+class BuyerController extends BaseController
 {
      /**
      * @config\Route("", name="buyer_profile")
@@ -35,4 +35,3 @@ class BuyerController extends Controller
         return new Response('itemsold');
     }
 }
-

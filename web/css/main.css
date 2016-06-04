@@ -2030,6 +2030,7 @@
 		padding: 0 1em;
 		text-decoration: none;
 		width: 100%;
+		font-weight: 500;
 	}
 
 		input[type="text"]:invalid,
@@ -2148,7 +2149,7 @@
 
 		input[type="checkbox"]:checked + label:before,
 		input[type="radio"]:checked + label:before {
-			background: rgba(69, 85, 120, 0.74);
+			background: rgba(106, 135, 199, 0.74);
 			border-color: #666;
 			color: #ffffff;
 			content: '\f00c';
@@ -2693,8 +2694,8 @@
 		input[type="reset"].alt,
 		input[type="button"].alt,
 		.button.alt {
-			background-color: transparent;
-			box-shadow: inset 0 0 0 2px #e5e5e5;
+			background-color: rgba(150, 166, 185, 0.64) !important;
+    	box-shadow: inset 0 0 0 2px rgba(229, 229, 229, 0.38) !important;
 			color: #777;
 		}
 
@@ -3075,8 +3076,8 @@
 		#banner input[type="reset"],
 		#banner input[type="button"],
 		#banner .button {
-			background-color: transparent;
-			box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+			background-color: #5B7DC5;
+    	box-shadow: inset 0 0 0 2px #5B7DC5;
 			color: #fff;
 			min-width: 12em;
 		}

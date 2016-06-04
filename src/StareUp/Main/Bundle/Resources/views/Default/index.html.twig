@@ -1,252 +1,251 @@
-
-
 <!DOCTYPE HTML>
+
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Stareup.com | One stop destination to Buy, Sell, Rent, Share resources that your dream startup may need.{% endblock %}</title>
-        <link rel="manifest" href="/manifest.json">
-        <meta name="description" content="Stareup.com. India's No.1 sharing portal for Startups. Succeeding without sharing is not what it takes to become the next big thing. We provide a simple solution to buy / sell / rent / share resources and save the crucial capital.">
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('images/h.png') }}" />
-        <!--[if lte IE 8]><script src="{{ asset('js/ie/html5shiv.js') }}"></script><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
 
-         <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Stareup.com | One stop destination to Buy, Sell, Rent, Share resources that your dream startup may need.{% endblock %}</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="description" content="Stareup.com. India's No.1 sharing portal for Startups. Succeeding without sharing is not what it takes to become the next big thing. We provide a simple solution to buy / sell / rent / share resources and save the crucial capital."> {% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/main.css') }}" /> {% endblock %}
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/h.png') }}" />
+  <!--[if lte IE 8]><script src="{{ asset('js/ie/html5shiv.js') }}"></script><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/ie8.css') }}" /><![endif]-->
 
-                api_key: 75gic18iaysxzq;
+  <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+    api_key: 75gic18iaysxzq;
 
-                scope: r_network,r_emailaddress,r_fullprofile,r_basicprofile,r_contactinfo;
+    scope: r_network, r_emailaddress, r_fullprofile, r_basicprofile, r_contactinfo;
 
-                authorize: true;
-                onLoad: OnLinkedInFrameworkLoad;
+    authorize: true;
+    onLoad: OnLinkedInFrameworkLoad;
 
-                function OnLinkedInFrameworkLoad() {
-                  IN.Event.on(IN, "auth", OnLinkedInAuth);
-                }
+    function OnLinkedInFrameworkLoad() {
+      IN.Event.on(IN, "auth", OnLinkedInAuth);
+    }
 
-                function OnLinkedInAuth() {
-                    IN.API.Profile("me").result(ShowProfileData);
-                }
+    function OnLinkedInAuth() {
+      IN.API.Profile("me").result(ShowProfileData);
+    }
 
-                function liAuth(){
-                   IN.User.authorize(function(){
-                       callback();
-                   });
-                }
+    function liAuth() {
+      IN.User.authorize(function() {
+        callback();
+      });
+    }
 
-                function ShowProfileData(profiles) {
-                    var member = profiles.values[0];
-                    var id=member.id;
-                    var firstName=member.firstName;
-                    var lastName=member.lastName;
-                    var photo=member.pictureUrl;
-                    var headline=member.headline;
+    function ShowProfileData(profiles) {
+      var member = profiles.values[0];
+      var id = member.id;
+      var firstName = member.firstName;
+      var lastName = member.lastName;
+      var photo = member.pictureUrl;
+      var headline = member.headline;
 
-                    //use information captured above
-                }
+      //use information captured above
+    }
+  </script>
+</head>
+{% block body %}
 
-            </script>
-    </head>
-    {% block body %}
-    <body class="landing">
-        <div id="page-wrapper">
+<body class="landing">
+  <div id="page-wrapper">
 
-            <!-- Header -->
-                <header id="header" class="alt">
-                    <h1>
+    <!-- Header -->
+    <header id="header" class="alt">
+      <h1>
                         <img src="{{ asset('images/wLogo.png') }}" style="border-bottom: 2px solid" height="30px" width="30px" />
                         <a href="/">StareUp</a> <span>because Sharing is a good gesture.</span>
                     </h1>
-                    <nav id="nav">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li>
-                                <a href="#">Explore  <span class="icon fa-angle-down" style="margin-left: 7px;"></span></a>
-                                <ul>
-                                    <li>
-                                        <a href="#"> + Tools</a>
-                                        <ul>
-                                            <li><a href="#">Social marketing</a></li>
-                                            <li><a href="#">Catchy taglines</a></li>
-                                            <li><a href="#">Free OTP solution</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#features">Features</a></li>
-                                    <li><a href="generic.html">Vision</a></li>
-                                    <li><a href="generic.html">Privacy Policy</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/seller/post" class="button btnUnderline">Post now</a></li>
-                            <li>
-                                <a id="modal_trigger" href="#modal">Sign Up</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </header>
+      <nav id="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li>
+            <a href="#">Explore  <span class="icon fa-angle-down" style="margin-left: 7px;"></span></a>
+            <ul>
+              <li>
+                <a href="#"> + Tools</a>
+                <ul>
+                  <li><a href="#">Social marketing</a></li>
+                  <li><a href="#">Catchy taglines</a></li>
+                  <li><a href="#">Free OTP solution</a></li>
+                </ul>
+              </li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="generic.html">Vision</a></li>
+              <li><a href="generic.html">Privacy Policy</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+          <li><a href="/seller/post" class="button btnUnderline">Post now</a></li>
+          <li>
+            <a id="modal_trigger" href="#modal">Sign Up</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-            <!-- Banner -->
-                <section id="banner">
-                    <h2>StareUp</h2>
-                    <p>Start + Share to stare up next BIG thing</p>
-                    <form class="form-wrapper" id="formMobile">
-                        <input type="text" placeholder="What do you need ?" required>
-                        <input type="text" placeholder="Where to ?">
-                        <button type="submit">Search</button>
-                    </form>
-                    <ul class="actions">
-                        <li>
-                        </li>
-                    </ul>
-                </section>
+    <!-- Banner -->
+    <section id="banner">
+      <h2>StareUp</h2>
+      <p>Start + Share to stare up next BIG thing</p>
+      <form class="form-wrapper" id="formMobile">
+        <input type="text" placeholder="What do you need ?" required>
+        <input type="text" placeholder="Where to ?">
+        <button type="submit">Search</button>
+      </form>
+      <ul class="actions">
+        <li>
+        </li>
+      </ul>
+    </section>
 
-            <!-- Main -->
-                <section id="main" class="container">
+    <!-- Main -->
+    <section id="main" class="container">
 
-                    <section class="box special">
-                        <header class="major">
-                            <h2>Introducing the Blazing fast mobile web app
+      <section class="box special">
+        <header class="major">
+          <h2>Introducing the Blazing fast mobile web app
                             <br />
                             to speed up your startup building.</h2>
-                            <p>No installation, no updation, Just add this to your homescreen<br />
-                            and you are ready to buy / sell / rent any resources that startups need on the go.</p>
-                        </header>
-                        <span class="image featured"><img src="images/webapp.jpg" width="1000px" height="500px" alt="" /></span>
-                    </section>
+          <p>No installation, no updation, Just add this to your homescreen
+            <br /> and you are ready to buy / sell / rent any resources that startups need on the go.</p>
+        </header>
+        <span class="image featured"><img src="images/webapp.jpg" width="1000px" height="500px" alt="" /></span>
+      </section>
 
-                    <section class="box special features" id='features'>
-                        <div class="features-row">
-                            <section>
-                                <span class="icon major fa-bolt accent2"></span>
-                                <h3>Blazing fast resource sharing</h3>
-                                <p>We have a wide range of products available for buy / rent / share / exchange. <br/> Buy with us and your money stays safe till you are not satisfied with the product.</p>
-                            </section>
-                            <section>
-                                <span class="icon major fa-briefcase accent3"></span>
-                                <h3>Save money</h3>
-                                <p>Sell / lend / share those big tables, computers, ACs, working spaces and many more that are no longer in use for you.<br/>Buy / borrow / share the resources you need for your startup for affordable prices or for free.<br/>Allow your resources to work for others and save money by paying only the half of the salary.</p>
-                            </section>
-                        </div>
-                        <div class="features-row">
+      <section class="box special features" id='features'>
+        <div class="features-row">
+          <section>
+            <span class="icon major fa-bolt accent2"></span>
+            <h3>Blazing fast resource sharing</h3>
+            <p>We have a wide range of products available for buy / rent / share / exchange.
+              <br/> Buy with us and your money stays safe till you are not satisfied with the product.</p>
+          </section>
+          <section>
+            <span class="icon major fa-briefcase accent3"></span>
+            <h3>Save money</h3>
+            <p>Sell / lend / share those big tables, computers, ACs, working spaces and many more that are no longer in use for you.
+              <br/>Buy / borrow / share the resources you need for your startup for affordable prices or for free.
+              <br/>Allow your resources to work for others and save money by paying only the half of the salary.</p>
+          </section>
+        </div>
+        <div class="features-row">
 
-                            <section>
-                                <span class="icon major fa-lock accent3"></span>
-                                <h3>Verified users / products</h3>
-                                <p>Each and every product is verified by our team. We verify the users profile before any transaction they do with us.</p>
-                            </section>
-                            <section>
-                                <span class="icon major fa-cloud accent4"></span>
-                                <h3>Easy returns</h3>
-                                <p>Don't you liked the product, no problem. We allow 7 days return policy and your money refund is our first priority.</p>
-                            </section>
-                        </div>
-                    </section>
+          <section>
+            <span class="icon major fa-lock accent3"></span>
+            <h3>Verified users / products</h3>
+            <p>Each and every product is verified by our team. We verify the users profile before any transaction they do with us.</p>
+          </section>
+          <section>
+            <span class="icon major fa-cloud accent4"></span>
+            <h3>Easy returns</h3>
+            <p>Don't you liked the product, no problem. We allow 7 days return policy and your money refund is our first priority.</p>
+          </section>
+        </div>
+      </section>
 
-                    <div class="row">
-                        <div class="6u 12u(narrower)">
+      <div class="row">
+        <div class="6u 12u(narrower)">
 
-                            <section class="box special">
-                                <span class="image featured"><img src="images/socialmarketing.jpg" height="250px" width="500px" alt="" /></span>
-                                <h3>Social marketing</h3>
-                                <p>Social marketing is always a problem if you do not have a dedicated marketing team. We automated the process and made it absolutely free for you.</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button alt">Give it a try</a></li>
-                                </ul>
-                            </section>
-
-                        </div>
-                        <div class="6u 12u(narrower)">
-
-                            <section class="box special">
-                                <span class="image featured"><img src="images/OTP.jpg" height="250px" width="500px"  alt="" /></span>
-                                <h3>Easy and free OTPs</h3>
-                                <p>OTPs is necessary but costly affair. We developed something new for your OTP requirements and guess what it is all free. Who don't like free things ?</p>
-                                <ul class="actions">
-                                    <li><a href="#" class="button alt">I want it</a></li>
-                                </ul>
-                            </section>
-
-                        </div>
-                    </div>
-
-                </section>
-
-            <!-- CTA -->
-                <section id="cta">
-
-                    <h2>Sign up for beta access</h2>
-                    <p>Be one of our first customers and get lifetime service for free.</p>
-
-                    <form>
-                        <div class="row uniform 50%">
-                            <div class="8u 12u(mobilep)">
-                                <input type="email" name="email" id="email" placeholder="Email Address" />
-                            </div>
-                            <div class="4u 12u(mobilep)">
-                                <input type="submit" value="Sign Up" class="fit" />
-                            </div>
-                        </div>
-                    </form>
-
-                </section>
-
-            <!-- Footer -->
-                <footer id="footer">
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-                    </ul>
-                    <ul class="copyright">
-                        <li>&copy; <a href="/">StareUp</a> Inc. All rights reserved.</li>
-                    </ul>
-                </footer>
-
-
-                <!-- Get started modal -->
-
-                <div id="modal" class="popupContainer" style="display:none;">
-                    <header class="popupHeader">
-                        <span class="header_title">Connect with us</span>
-                        <span class="modal_close"><i class="fa fa-times"></i></span>
-                    </header>
-
-                    <section class="popupBody">
-                    <center>
-                        We believe in saving the precious time of yours, so blazing fast connect is here.
-                        <script type="in/Login"></script>
-                        <a onclick="liAuth()" id="lInButton"><img src="images/inSignUp.png" width="100%;"/></a>
-                        <!--<a href="" id="gButton"><img src="images/gSignUp.png" width="100%;"/></a>
-                        <a href="" id="fButton"><img src="images/fSignUp.png" width="100%;"/></a>
-                        <a href="" id="tButton"><img src="images/tSignUp.png" width="100%;"/></a>-->
-                    </center>
-                    </section>
-                </div>
-
-
-                <!-- Till here -->
+          <section class="box special">
+            <span class="image featured"><img src="images/socialmarketing.jpg" height="250px" width="500px" alt="" /></span>
+            <h3>Social marketing</h3>
+            <p>Social marketing is always a problem if you do not have a dedicated marketing team. We automated the process and made it absolutely free for you.</p>
+            <ul class="actions">
+              <li><a href="#" class="button alt">Give it a try</a></li>
+            </ul>
+          </section>
 
         </div>
+        <div class="6u 12u(narrower)">
 
-        {% endblock %}
+          <section class="box special">
+            <span class="image featured"><img src="images/OTP.jpg" height="250px" width="500px"  alt="" /></span>
+            <h3>Easy and free OTPs</h3>
+            <p>OTPs is necessary but costly affair. We developed something new for your OTP requirements and guess what it is all free. Who don't like free things ?</p>
+            <ul class="actions">
+              <li><a href="#" class="button alt">I want it</a></li>
+            </ul>
+          </section>
 
-        {% block javascripts %}
-        <!-- Scripts -->
-            <script src="{{ asset('js/jquery.min.js') }}"></script>
-            <script src="{{ asset('js/jquery.dropotron.min.js') }}"></script>
-            <script src="{{ asset('js/jquery.scrollgress.min.js') }}"></script>
-            <script src="{{ asset('js/skel.min.js') }}"></script>
-            <script src="{{ asset('/js/util.js') }}"></script>
-            <!--[if lte IE 8]><script src="{{ asset('js/ie/respond.min.js') }}"></script><![endif]-->
-            <script src="{{ asset('js/main.js') }}"></script>
-            <script src="{{ asset('js/jquery.leanModal.min.js') }}"></script>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+
+      <h2>Sign up for beta access</h2>
+      <p>Be one of our first customers and get lifetime service for free.</p>
+
+      <form>
+        <div class="row uniform 50%">
+          <div class="8u 12u(mobilep)">
+            <input type="email" name="email" id="email" placeholder="Email Address" />
+          </div>
+          <div class="4u 12u(mobilep)">
+            <input type="submit" value="Sign Up" class="fit" />
+          </div>
+        </div>
+      </form>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; <a href="/">StareUp</a> Inc. All rights reserved.</li>
+      </ul>
+    </footer>
 
 
-        {% endblock %}
+    <!-- Get started modal -->
 
-    </body>
+    <div id="modal" class="popupContainer" style="display:none;">
+      <header class="popupHeader">
+        <span class="header_title">Connect with us</span>
+        <span class="modal_close"><i class="fa fa-times"></i></span>
+      </header>
+
+      <section class="popupBody">
+        <center>
+          We believe in saving the precious time of yours, so blazing fast connect is here.
+          <script type="in/Login"></script>
+          <a onclick="liAuth()" id="lInButton"><img src="images/inSignUp.png" width="100%;" /></a>
+          <!--<a href="" id="gButton"><img src="images/gSignUp.png" width="100%;"/></a>
+                        <a href="" id="fButton"><img src="images/fSignUp.png" width="100%;"/></a>
+                        <a href="" id="tButton"><img src="images/tSignUp.png" width="100%;"/></a>-->
+        </center>
+      </section>
+    </div>
+
+
+    <!-- Till here -->
+
+  </div>
+
+  {% endblock %} {% block javascripts %}
+  <!-- Scripts -->
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.dropotron.min.js') }}"></script>
+  <script src="{{ asset('js/jquery.scrollgress.min.js') }}"></script>
+  <script src="{{ asset('js/skel.min.js') }}"></script>
+  <script src="{{ asset('/js/util.js') }}"></script>
+  <!--[if lte IE 8]><script src="{{ asset('js/ie/respond.min.js') }}"></script><![endif]-->
+  <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/jquery.leanModal.min.js') }}"></script>
+
+
+  {% endblock %}
+
+</body>
+
 </html>

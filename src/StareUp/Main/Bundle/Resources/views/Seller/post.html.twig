@@ -1,135 +1,141 @@
-{% extends 'layout.html.twig' %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/seller.css') }}" />
-{% endblock %}
-
-{% block pageContent %}
+{% extends 'layout.html.twig' %} {% block stylesheets %} {{ parent() }}
+<link rel="stylesheet" href="{{ asset('css/seller.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/dropzone.css') }}" /> {% endblock %} {% block pageContent %}
 
 <div id="page-wrapper">
 
-			<!-- Main -->
-				<section id="banner" class="sellerContainer">
-					<div class="row">
-						<div class="12u">
-							<!-- Form -->
-								<section class="box 8u 12u(narrower) bkg fl">
-                <h3>Post a Free Ad</h3>
-                <form method="post" action="#">
-                  <div class="row uniform 50%">
-                    <div class="12u">
-                        <input type="text" name="title" id="title" placeholder="Attract customer with a catchy title !"/>
-                    </div>
-                  </div>
-                  <div class="row uniform 50%">
-                    <div class="12u">
-                        <textarea name="description" id="description" rows="4" placeholder = "Describe the product like a poem :-)"></textarea>
-                    </div>
-                  </div>
-                  <div class="row uniform 50%">
-                    <div class="4u 12u(narrower)">
-                      <input type="radio" id="sell" name="sellingType">
-                      <label for="sell">Sell</label>
-                    </div>
-                    <div class="4u 12u(narrower)">
-                      <input type="radio" id="rent" name="sellingType">
-                      <label for="rent">Rent</label>
-                    </div>
-                    <div class="4u 12u(narrower)">
-                      <input type="radio" id="Share" name="sellingType" checked="">
-                      <label for="Share">Share</label>
-                    </div>
-                  </div>
-                  <div class="row uniform 50%">
-                    <div class="6u 12u(mobilep)">
-                        <div class="select-wrapper">
-                            <select name="category" id="category">
-                              <option value="-1">Select category of the item</option>
-                              <option value="0">Computer (like laptop/computer etc)</option>
-                              <option value="1">Computer Accessories (like printer/mouse etc)</option>
-                              <option value="2">Hard assets (like chair/table etc)</option>
-                              <option value="3">Resources (like web designer/software licenses etc)</option>
-                            </select>
-                        </div>
-                    </div>
-                      <div class="6u 12u(mobilep)">
-                          <input id="geocomplete" name="location" type="text" placeholder="Where are you located ?" size="90" autocomplete="off">
-                          <input type="hidden" name="lat" id="lat" value=""/>
-                          <input type="hidden" name="long" id="long" value=""/>
-                      </div>
-                  </div>
+  <!-- Main -->
+  <section id="banner" class="sellerContainer">
+    <div class="row">
+      <div class="12u">
+        <!-- Form -->
+        <section class="box 8u 12u(narrower) bkg fl">
+          <h3>Post a Free Ad</h3>
+            <input type="hidden" name="_csrf" value="123123" id="_csrf" />
+            <input type="hidden" name="fileIds" value="{123, 1232, 986}" id="fileIds" />
+            <input type="hidden" name="fileNames" value="{abd.jpg, xyz.jpg}" id="fileNames" />
+            <div class="row uniform 50%">
+              <div class="12u">
+                <input type="text" name="title" id="title" placeholder="Attract customer with a catchy title !" required/>
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="12u">
+                <textarea name="description" id="description" rows="4" placeholder="Describe the product like a poem :-)" required minLength=50 maxLength=500></textarea>
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="4u">
+                <input type="radio" id="sell" name="sellingType">
+                <label for="sell">Sell</label>
+              </div>
+              <div class="4u">
+                <input type="radio" id="rent" name="sellingType">
+                <label for="rent">Rent</label>
+              </div>
+              <div class="4u">
+                <input type="radio" id="Share" name="sellingType" checked="">
+                <label for="Share">Share</label>
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="6u 12u(mobilep)">
+                <div class="select-wrapper">
+                  <select name="category" id="category" required>
+                    <option value="-1">Select category of the item</option>
+                    <option value="0">Computer (like laptop/computer etc)</option>
+                    <option value="1">Computer Accessories (like printer/mouse etc)</option>
+                    <option value="2">Hard assets (like chair/table etc)</option>
+                    <option value="3">Resources (like web designer/software licenses etc)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="6u 12u(mobilep)">
+                <input id="geocomplete" name="location" type="text" placeholder="Where are you located ?" size="90" autocomplete="off">
+                <input type="hidden" name="lat" id="lat" value="" />
+                <input type="hidden" name="long" id="long" value="" />
+              </div>
+            </div>
 
-                  <div class="row uniform 50%">
-                    <div class="6u 12u(mobilep)">
-                        <input type="text" name="quantity" id="quantity" placeholder = "Quantity ?" />
-                    </div>
-                    <div class="6u 12u(mobilep)">
-                        <input type="text" name="duration" id="duration" placeholder = "Duration of share ?(In months)" title = "(In months) Duration for which you want to give away ?"/>
-                    </div>
-                  </div>
+            <div class="row uniform 50%">
+              <div class="6u 12u(mobilep)">
+                <input type="text" name="quantity" id="quantity" placeholder="Quantity ?" />
+              </div>
+              <div class="6u 12u(mobilep)">
+                <input type="text" name="duration" id="duration" placeholder="Duration of share ?(In months)" title="(In months) Duration for which you want to give away ?" />
+              </div>
+            </div>
 
-                  <div class="row uniform 50%">
-                    <div class="6u 12u(mobilep)">
-                        <input type="text" class="" name="price" id="price" placeholder="Price ?" title="Please give the reasonable price for sure conversion"/>
-                    </div>
-                    <div class="2u 12u(mobilep)">
-                        <select class="" name="currency" id="currency">
-                            <option value="0">INR</option>
-                            <option value="1">USD</option>
-                            <option value="2">YEN</option>
-                        </select>
-                    </div>
-                    <div class="4u 12u(narrower)">
-                      <input type="checkbox" id="negotiable" name="negotiable" checked>
-                      <label for="negotiable">Price Negotiable</label>
-                    </div>
-                  </div>
-                  <div class="row uniform 50%">
-                    <div class="12u">
-                        <input type="text" name="title" id="title" placeholder="Upload original images for better conversions."/>
-                    </div>
-                  </div>
-                  <div class="row uniform 50%">
-                      <div class="6u 12u(mobilep)">
-                        <input type="text" name="mobile" id="mobile" placeholder="Mobile number"/>
-                      </div>
-                      <div class="6u 12u(mobilep)">
-                        <input type="email" name="email" id="email" value="" placeholder="Email">
-                      </div>
-                  </div>
-                  <div class="row uniform 50%">
-                    <div class="6u 12u(narrower)">
-                      <input type="checkbox" id="tnc" name="tnc" checked="">
-                      <label for="tnc">I know the terms and conditions</label>
-                    </div>
-                  </div>
-                  <div class="row uniform">
-                    <div class="12u">
-                      <ul class="actions">
-                        <li><input type="submit" value="Sell now"></li>
-                        <li><input type="reset" value="Reset" class="alt"></li>
-                      </ul>
-                    </div>
+            <div class="row uniform 50%">
+              <div class="6u 12u(mobilep)">
+                <input type="text" class="" name="price" id="price" placeholder="Price ?" title="Please give the reasonable price for sure conversion" />
+              </div>
+              <div class="2u 12u(mobilep)">
+                <select class="" name="currency" id="currency">
+                  <option value="0">INR</option>
+                  <option value="1">USD</option>
+                  <option value="2">YEN</option>
+                </select>
+              </div>
+              <div class="4u 12u(narrower)">
+                <input type="checkbox" id="negotiable" name="negotiable" checked>
+                <label for="negotiable">Price Negotiable</label>
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="12u">
+                <span style="color:#eee">Please upload original images for better conversion.</span>
+                <form action="../api/v1/upload" method="post" enctype="multipart/form-data" class="dropzone" id="imageUploaderClient">
+                  <input type="hidden" name="_token" value="12312312312">
+                  <div class="fallback">
+                    <input name="file" type="file" multiple />
                   </div>
                 </form>
-								</section>
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="6u 12u(mobilep)">
+                <input type="text" name="mobile" id="mobile" placeholder="Mobile number" />
+              </div>
+              <div class="6u 12u(mobilep)">
+                <input type="email" name="email" id="email" value="" placeholder="Email">
+              </div>
+            </div>
+            <div class="row uniform 50%">
+              <div class="6u 12u(narrower)">
+                <input type="checkbox" id="tnc" name="tnc" checked="">
+                <label for="tnc">I know the terms and conditions</label>
+              </div>
+            </div>
+            <div class="row uniform">
+              <div class="12u">
+                <ul class="actions">
+                  <li>
+                    <input type="button" value="Sell now" onClick="validateAndSave(this);">
+                  </li>
+                  <li>
+                    <input type="reset" value="Reset" class="alt" onclick="resetForms();">
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </section>
 
-                <section class="box 4u 12u(narrower) sellingTips bkg2" id="tips">
-                    <h3>Posting Tips</h3>
-                    <ul>
-                        <li>The title is the first thing that buyer sees, put a catchy line for higher conversion rate.</li>
-                        <li>The description should be clear and self-explanatory.</li>
-                        <li>Mention all aspects like the age, breakages, warranties, upgrades etc to sale better.</li>
-                        <li>Upload the original product images for genuine ad previews.</li>
-                        <li>While mentioning price, consider age, model type, market value. If confused search for similar item with StareUp.</li>
-                        <li>If you want to share or rent, please mention the duration upto which the item is available.</li>
-                    </ul>
-                </section>
+        <section class="box 4u 12u(narrower) sellingTips bkg2" id="tips">
+          <h3>Posting Tips</h3>
+          <ul>
+            <li>The title is the first thing that buyer sees, put a catchy line for higher conversion rate.</li>
+            <li>The description should be clear and self-explanatory.</li>
+            <li>Mention all aspects like the age, breakages, warranties, upgrades etc to sale better.</li>
+            <li>Upload the original product images for genuine ad previews.</li>
+            <li>While mentioning price, consider age, model type, market value. If confused search for similar item with StareUp.</li>
+            <li>If you want to share or rent, please mention the duration upto which the item is available.</li>
+          </ul>
+        </section>
 
-						</div>
-					</div>
-          <div class="row">
+      </div>
+    </div>
+    <!--<div class="row">
               <div class="12u">
                   <section class="box 12u(narrower) bkg" id="tips">
                       <h3>Search anything</h3>
@@ -145,46 +151,59 @@
                       </form>
                   </section>
               </div>
-          </div>
+          </div>-->
 
-				</section>
+  </section>
 
 </div>
-{% endblock %}
+{% endblock %} {% block javascripts %} {{ parent() }}
+<script src="{{ asset('js/seller.js') }}"></script>
+<script src="{{ asset('js/dropzone.js') }}"></script>
+<script>
+  $(function() {
+    $("#geocomplete").geocomplete().bind("geocode:result", function(event, result) {
+      $('#lat').val(result.geometry.location.lat());
+      $('#long').val(result.geometry.location.lng());
+    }).bind("geocode:error", function(event, status) {}).bind("geocode:multiple", function(event, results) {});
 
+    $("#find").click(function() {
+      $("#geocomplete").trigger("geocode");
+    });
 
-{% block javascripts %}
-    {{ parent() }}
-    <script>
+    $("#examples a").click(function() {
+      $("#geocomplete").val($(this).text()).trigger("geocode");
+      return false;
+    });
 
-      $(function(){
+  });
 
-        $("#geocomplete").geocomplete()
-          .bind("geocode:result", function(event, result){
-            $('#lat').val(result.geometry.location.lat());
-            $('#long').val(result.geometry.location.lng());
-          })
-          .bind("geocode:error", function(event, status){
-
-          })
-          .bind("geocode:multiple", function(event, results){
-
-          });
-
-        $("#find").click(function(){
-          $("#geocomplete").trigger("geocode");
-        });
-
-
-        $("#examples a").click(function(){
-          $("#geocomplete").val($(this).text()).trigger("geocode");
-          return false;
-        });
-
+  Dropzone.options.imageUploaderClient = {
+    uploadMultiple: true,
+    maxFilesize: 2, // MB
+    accept: function(file, done) {
+      if (file.name == "justinbieber.jpg") {
+        done("Naha, you don't.");
+      }
+      else { done(); }
+    },
+    addRemoveLinks: true,
+    removedfile: function(file) {
+      var name = file.name;
+      $.ajax({
+          type: 'POST',
+          url: '/deleteImage',
+          data: "id="+name,
+          dataType: 'html'
       });
+          var _ref;
+          return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+    },
+    acceptedFiles: "image/*",
+    dictDefaultMessage: "Drag and drop images here"
+  };
 
-    </script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-    <script src="{{ asset('js/jquery.geocomplete.js') }}"></script>
+</script>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<script src="{{ asset('js/jquery.geocomplete.js') }}"></script>
 
 {% endblock %}
