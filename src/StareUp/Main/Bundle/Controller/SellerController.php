@@ -43,6 +43,24 @@ class SellerController extends BaseController
      */
     public function post()
     {
+        $res = array();
+        $token = $this->getPostRequestParam('_token');
+        if(!$isCsrfTokenValid) {
+          $res['status'] = false;
+          $res['code'] = 401;
+          $res['mesg'] = 'Not authorized for this.';
+        }
+        $sellingObj = $this->getPostRequestParam('sellingObj');
+        $sellingArray = json_decode($sellingObj, true);
+        if($sellingArray) {
+
+        } else {
+            $res['status'] = false;
+            $res['code'] = 406;
+            $res['mesg'] = 'Not a valid Object';
+        }
 	      return $this->render('StareUpMainBundle:Seller:post.html.twig');
     }
 }
+
+?>

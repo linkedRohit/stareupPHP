@@ -2,19 +2,30 @@ function validateAndSave(d) {
     var sellingObj = createObject();
     var validated = true;// validateInputs(d);
     if(validated) {
+        if(sellingObj) {
+            sellingJson = JSON.stringify(sellingObj);
+        }
 
+        buttonsVisible('sellNow','none');
+        buttonsVisible('reset','none');
+        loaderVisible('none');
+        loaderVisible('block');
         //make ajax call to save
         $.ajax({
             type: "POST",
             url: "seller/post",
-            data: { 'data' : sellingObj },
+            data: { 'sellingObj' : sellingJson },
             beforeSend: function( xhr ) {
-                hideLoader();
-                showLoader();
+                buttonsVisible('sellNow','none');
+                buttonsVisible('reset','none');
+                loaderVisible('none');
+                loaderVisible('block');
             }
         })
         .done(function() {
-            hideLoader();
+            loaderVisible('none');
+            buttonsVisible('sellNow','show');
+            buttonsVisible('reset','show');
             showSuccess();
             showPreview();
         })
@@ -39,9 +50,21 @@ function createObject(d) {
     item.long = 37.410929;//$('#long').val();
     item.quantity = 3;//$('#quantity').val();
     item.duration = 2;//$('#duration').val();
+    item.price = 10000;//$('#price').val();
+    item.currency = 'INR';//$('#currency').val();
+    item.negotiable = 1;//$('#negotiable').val();
     item.fileIds = '123,213';//$('#fileIds').val();
     item.fileNames = 'sample.jpg';//$('#fileNames').val();
-    item.mobile = 12312320320;//$('#mobile').val();
+    item.mobile = 1231232032;//$('#mobile').val();
     item.email = 'a1@spam.me';//$('#email').val();
     item.tnc = 1;//$('#tnc').val();
+    return item;
+}
+
+function loaderVisible(style) {
+    $('#loader')[0].style.display = style;
+}
+
+function buttonsVisible(btnId, style) {
+    $('#'+ btnId)[0].style.display = style;
 }

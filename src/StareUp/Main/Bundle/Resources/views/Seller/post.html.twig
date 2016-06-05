@@ -71,11 +71,13 @@
                 <input type="text" class="" name="price" id="price" placeholder="Price ?" title="Please give the reasonable price for sure conversion" />
               </div>
               <div class="2u 12u(mobilep)">
-                <select class="" name="currency" id="currency">
-                  <option value="0">INR</option>
-                  <option value="1">USD</option>
-                  <option value="2">YEN</option>
-                </select>
+                <div class="select-wrapper">
+                    <select class="" name="currency" id="currency">
+                      <option value="0">INR</option>
+                      <option value="1">USD</option>
+                      <option value="2">YEN</option>
+                    </select>
+                </div>
               </div>
               <div class="4u 12u(narrower)">
                 <input type="checkbox" id="negotiable" name="negotiable" checked>
@@ -111,13 +113,17 @@
               <div class="12u">
                 <ul class="actions">
                   <li>
-                    <input type="button" value="Sell now" onClick="validateAndSave(this);">
+                    <input type="button" value="Sell now" id="sellNow" onClick="validateAndSave(this);">
                   </li>
                   <li>
-                    <input type="reset" value="Reset" class="alt" onclick="resetForms();">
+                    <input type="reset" value="Reset" id="reset" class="alt" onclick="resetForms();">
+                  </li>
+                  <li>
+                      <div class="loader" id="loader"></div>
                   </li>
                 </ul>
               </div>
+
             </div>
         </section>
 
