@@ -107,5 +107,4 @@ class BaseController extends Controller
         // $exception = new \Exception('Some special exception');
         // $event->setException($exception);
     }
-
 }

@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration as config;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use StareUp\Main\Bundle\Entity\Item;
 
 /**
  * @config\Route("/seller")
@@ -45,21 +46,55 @@ class SellerController extends BaseController
     {
         $res = array();
         $token = $this->getPostRequestParam('_token');
+        $isCsrfTokenValid = true;
         if(!$isCsrfTokenValid) {
           $res['status'] = false;
           $res['code'] = 401;
           $res['mesg'] = 'Not authorized for this.';
         }
         $sellingObj = $this->getPostRequestParam('sellingObj');
-        $sellingArray = json_decode($sellingObj, true);
-        if($sellingArray) {
+        $array = json_decode($sellingObj, true);
+        if($array) {
+            $array['userId'] = 1231;
+            $item = $this->getItemObjectFromArray($array);
+        }
+        if($item) {
+          $em = $this->getDoctrine()->getManager();
+
+          // tells Doctrine you want to (eventually) save the Product (no queries yet)
+          $em->persist($item);
+
+          // actually executes the queries (i.e. the INSERT query)
+          $em->flush();
 
         } else {
             $res['status'] = false;
             $res['code'] = 406;
             $res['mesg'] = 'Not a valid Object';
         }
+        echo $item->getId();die;
 	      return $this->render('StareUpMainBundle:Seller:post.html.twig');
+    }
+
+    private function getItemObjectFromArray($array) {
+
+        $itemObj = new Item();
+        $itemObj->setTitle($array['title']);
+        $itemObj->setDescription($array['description']);
+        $itemObj->setUserId($array['userId']);
+        $itemObj->setType($array['type']);
+        $itemObj->setCategory($array['category']);
+        $itemObj->setLocation($array['location']);
+        $itemObj->setLattitude($array['lattitude']);
+        $itemObj->setLongitude($array['longitude']);
+        $itemObj->setQuantity($array['quantity']);
+        $itemObj->setDuration($array['duration']);
+        $itemObj->setPrice($array['price']);
+        $itemObj->setCurrency($array['currency']);
+        $itemObj->setNegotiable($array['negotiable']);
+        $itemObj->setImages($array['images']);
+
+        return $itemObj;
     }
 }
 

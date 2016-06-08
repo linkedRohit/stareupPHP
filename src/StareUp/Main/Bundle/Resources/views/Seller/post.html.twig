@@ -12,8 +12,7 @@
         <section class="box 8u 12u(narrower) bkg fl">
           <h3>Post a Free Ad</h3>
             <input type="hidden" name="_csrf" value="123123" id="_csrf" />
-            <input type="hidden" name="fileIds" value="{123, 1232, 986}" id="fileIds" />
-            <input type="hidden" name="fileNames" value="{abd.jpg, xyz.jpg}" id="fileNames" />
+            <input type="hidden" name="images" value="{123, 1232, 986}" id="images" />
             <div class="row uniform 50%">
               <div class="12u">
                 <input type="text" name="title" id="title" placeholder="Attract customer with a catchy title !" required/>
@@ -26,15 +25,15 @@
             </div>
             <div class="row uniform 50%">
               <div class="4u">
-                <input type="radio" id="sell" name="sellingType">
+                <input type="radio" id="sell" name="type">
                 <label for="sell">Sell</label>
               </div>
               <div class="4u">
-                <input type="radio" id="rent" name="sellingType">
+                <input type="radio" id="rent" name="type">
                 <label for="rent">Rent</label>
               </div>
               <div class="4u">
-                <input type="radio" id="Share" name="sellingType" checked="">
+                <input type="radio" id="Share" name="type" checked="">
                 <label for="Share">Share</label>
               </div>
             </div>
@@ -52,8 +51,8 @@
               </div>
               <div class="6u 12u(mobilep)">
                 <input id="geocomplete" name="location" type="text" placeholder="Where are you located ?" size="90" autocomplete="off">
-                <input type="hidden" name="lat" id="lat" value="" />
-                <input type="hidden" name="long" id="long" value="" />
+                <input type="hidden" name="lattitude" id="lat" value="" />
+                <input type="hidden" name="longitude" id="long" value="" />
               </div>
             </div>
 
