@@ -6,8 +6,8 @@ function validateAndSave(d) {
             sellingJson = JSON.stringify(sellingObj);
         }
 
-        buttonsVisible('sellNow','none');
-        buttonsVisible('reset','none');
+        entityVisible('sellNow','none');
+        entityVisible('reset','none');
         loaderVisible('none');
         loaderVisible('block');
         //make ajax call to save
@@ -16,24 +16,24 @@ function validateAndSave(d) {
             url: "seller/post",
             data: { 'sellingObj' : sellingJson },
             beforeSend: function( xhr ) {
-                buttonsVisible('sellNow','none');
-                buttonsVisible('reset','none');
+                entityVisible('sellNow','none');
+                entityVisible('reset','none');
                 loaderVisible('none');
                 loaderVisible('block');
             }
         })
-        .done(function() {
+        .done(function(data) {
             loaderVisible('none');
-            buttonsVisible('sellNow','show');
-            buttonsVisible('reset','show');
-            showSuccess();
+            entityVisible('sellNow','block');
+            entityVisible('reset','block');
+            alertUser('Success! your posting was successful.');
             showPreview();
         })
-        .fail(function() {
+        .fail(function(data) {
             highLightError();
         })
         .always(function() {
-            alert( "complete" );
+            //alert( "complete" );
         });
         //hide loader on callback
     }
@@ -43,7 +43,7 @@ function createObject(d) {
     var item = {};
     item.title = '131231231';//$('#title').val();
     item.description = 'asjkdakld adaklsdj alsdjklasjd';//$('#description').val();
-    item.type = 'rent';//$('#sellingType').val();
+    item.type = 1;//$('#sellingType').val();
     item.category = 1;//$('#category').val();
     item.location = 'Noida';//$('#location').val();
     item.lattitude = 28.3523232;//$('#lat').val();
@@ -63,6 +63,31 @@ function loaderVisible(style) {
     $('#loader')[0].style.display = style;
 }
 
-function buttonsVisible(btnId, style) {
+function entityVisible(btnId, style) {
     $('#'+ btnId)[0].style.display = style;
+}
+
+function alertUser(msg) {
+    showSuccess(msg);
+    setTimeout(function () {
+        hideSuccess();
+    }, 5000);
+}
+
+function showSuccess(msg) {
+    var alert = $('#successToast')[0];
+    alert.innerText = msg;
+    alert.style.opacity = 0.9;
+}
+
+function hideSuccess(){
+    var alert = $('#successToast')[0];
+    alert.style.opacity = 0;
+}
+
+function showPreview() {
+    $('#sellNow')[0].value = 'Edit Post';
+    //hide the posting layer.
+    entityVisible('tips', 'none');
+    entityVisible('preview', 'block');
 }

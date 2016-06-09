@@ -64,7 +64,20 @@
   }
 }
 
-#tips li {
+.sellingTips li {
   margin-top: 15px;
   text-align: left;
+}
+
+.preview {
+    display: none;
+    color: #555;
+}
+
+.previewSkeleton {
+    display: block;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    color: #666;
 }

@@ -4090,3 +4090,25 @@ input:hover:after {
 .bdrLeft {
 	border-left: 1px solid #aaa;
 }
+
+#successToast{
+	position: fixed;
+	bottom: 50px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	z-index: 2;
+	border: 1px solid #666;
+	background-color: #6FC5A2;
+	padding: 10px 0;
+	text-align: center;
+	opacity: 0;
+	font-weight: 600;
+	color: white;
+	border-radius: 4px;
+	-webkit-transition: opacity 0.5s ease-out;
+	-moz-transition: opacity 0.5s ease-out;
+	-ms-transition: opacity 0.5s ease-out;
+	-o-transition: opacity 0.5s ease-out;
+	transition: opacity 0.5s ease-out;
+}

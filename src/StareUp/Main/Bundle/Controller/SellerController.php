@@ -50,6 +50,7 @@ class SellerController extends BaseController
         if(!$isCsrfTokenValid) {
           $res['status'] = false;
           $res['code'] = 401;
+          $res['data'] = false;
           $res['mesg'] = 'Not authorized for this.';
         }
         $sellingObj = $this->getPostRequestParam('sellingObj');
@@ -63,19 +64,24 @@ class SellerController extends BaseController
 
           // tells Doctrine you want to (eventually) save the Product (no queries yet)
           $em->persist($item);
-
           // actually executes the queries (i.e. the INSERT query)
           $em->flush();
+          $res['status'] = true;
+          $res['code'] = 200;
+          $res['data'] = $item->getId();
+          $res['mesg'] = "Your item is posted successfully.";
 
         } else {
             $res['status'] = false;
             $res['code'] = 406;
+            $res['data'] = false;
             $res['mesg'] = 'Not a valid Object';
         }
-        echo $item->getId();die;
-	      return $this->render('StareUpMainBundle:Seller:post.html.twig');
+
+        return new Response(json_encode($res));
     }
 
+    //This will be moved to seller repository.
     private function getItemObjectFromArray($array) {
 
         $itemObj = new Item();
@@ -93,6 +99,7 @@ class SellerController extends BaseController
         $itemObj->setCurrency($array['currency']);
         $itemObj->setNegotiable($array['negotiable']);
         $itemObj->setImages($array['images']);
+        $itemObj->setPostedOn(new \DateTime('now'));
 
         return $itemObj;
     }
