@@ -1,5 +1,5 @@
 <?php
-namespace StareUp\Main\Bundle\DBLayer;
+namespace StareUp\Main\Bundle\DBLayer\Interfaces;
 
 /**
  * Description of iBaseDao

@@ -1,5 +1,5 @@
 {
-    "name": "rohit/stare-up",
+    "name": "rohit/stareup",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -8,7 +8,8 @@
         },
         "classmap": [
             "app/AppKernel.php",
-            "app/AppCache.php"
+            "app/AppCache.php",
+	    "src/ThirdParty"
         ]
     },
     "autoload-dev": {
@@ -26,7 +27,9 @@
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "*",
         "sensio/framework-extra-bundle": "*",
-        "incenteev/composer-parameter-handler": "^2.0"
+        "incenteev/composer-parameter-handler": "^2.0",
+	"jms/security-extra-bundle": "*",
+        "jms/di-extra-bundle": "*"
     },
     "require-dev": {
         "sensio/generator-bundle": "*",

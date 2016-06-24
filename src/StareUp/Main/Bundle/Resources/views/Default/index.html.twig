@@ -90,9 +90,13 @@
     <section id="banner">
       <h2>StareUp</h2>
       <p>Start + Share to stare up next BIG thing</p>
-      <form class="form-wrapper" id="formMobile">
-        <input type="text" placeholder="What do you need ?" required>
-        <input type="text" placeholder="Required at ?">
+      <form class="form-wrapper" id="formMobile" action="/search/items" method="get">
+        <input type="text" placeholder="What do you need ?" required name="keywords">
+
+        <input type="text" id="geocomplete" size="90" placeholder="Required at ?" name="location" autocomplete="off">
+        <input type="hidden" name="lat" id="lat" />
+        <input type="hidden" name="long" id="long" />
+
         <button type="submit">Search</button>
       </form>
       <ul class="actions">
@@ -242,8 +246,54 @@
   <!--[if lte IE 8]><script src="{{ asset('js/ie/respond.min.js') }}"></script><![endif]-->
   <script src="{{ asset('js/main.js') }}"></script>
   <script src="{{ asset('js/jquery.leanModal.min.js') }}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="{{ asset('js/jquery.geocomplete.js') }}"></script>
 
 
+    <script>
+      $(function() {
+        $("#geocomplete").geocomplete().bind("geocode:result", function(event, result) {
+          $('#lat').val(result.geometry.location.lat());
+          $('#long').val(result.geometry.location.lng());
+        }).bind("geocode:error", function(event, status) {}).bind("geocode:multiple", function(event, results) {});
+
+        $("#find").click(function() {
+          $("#geocomplete").trigger("geocode");
+        });
+
+        $("#examples a").click(function() {
+          $("#geocomplete").val($(this).text()).trigger("geocode");
+          return false;
+        });
+
+      });
+
+      Dropzone.options.imageUploaderClient = {
+        uploadMultiple: true,
+        maxFilesize: 2, // MB
+        accept: function(file, done) {
+          if (file.name == "justinbieber.jpg") {
+            done("Naha, you don't.");
+          }
+          else { done(); }
+        },
+        addRemoveLinks: true,
+        removedfile: function(file) {
+          var name = file.name;
+          $.ajax({
+              type: 'POST',
+              url: '/deleteImage',
+              data: "id="+name,
+              dataType: 'html'
+          });
+              var _ref;
+              return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+        },
+        acceptedFiles: "image/*",
+        dictDefaultMessage: "Drag and drop images here"
+      };
+
+    </script>
   {% endblock %}
 
 </body>

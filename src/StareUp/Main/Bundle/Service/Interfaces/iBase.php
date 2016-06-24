@@ -1,5 +1,5 @@
 <?php
-namespace StareUp\Main\Bundle\Service;
+namespace StareUp\Main\Bundle\Service\Interfaces;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.

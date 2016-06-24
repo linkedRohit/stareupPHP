@@ -27,7 +27,7 @@ function validateAndSave(d) {
             entityVisible('sellNow','block');
             entityVisible('reset','block');
             alertUser('Success! your posting was successful.');
-            showPreview();
+            showPreview(data);
         })
         .fail(function(data) {
             highLightError();
@@ -41,11 +41,11 @@ function validateAndSave(d) {
 
 function createObject(d) {
     var item = {};
-    item.title = '131231231';//$('#title').val();
-    item.description = 'asjkdakld adaklsdj alsdjklasjd';//$('#description').val();
-    item.type = 1;//$('#sellingType').val();
+    item.title = 'PC with mouse and keyboard with table';//$('#title').val();
+    item.description = 'asjkdakld adaklsdj alsdjklasjd asjkdakld adaklsdj alsdjklasjd asjkdakld adaklsdj alsdjklasjdasjkdakld adaklsdj alsdjklasjd';//$('#description').val();
+    item.type = 'rent';//$('#sellingType').val();
     item.category = 1;//$('#category').val();
-    item.location = 'Noida';//$('#location').val();
+    item.location = 'Sec 132, Noida';//$('#location').val();
     item.lattitude = 28.3523232;//$('#lat').val();
     item.longitude = 37.410929;//$('#long').val();
     item.quantity = 3;//$('#quantity').val();
@@ -85,9 +85,40 @@ function hideSuccess(){
     alert.style.opacity = 0;
 }
 
-function showPreview() {
+function showPreview(data) {
     $('#sellNow')[0].value = 'Edit Post';
+    $('#postHead')[0].innerHTML = 'Edit your post';
     //hide the posting layer.
     entityVisible('tips', 'none');
     entityVisible('preview', 'block');
+    createPreview(data);
+    $('#editPost')[0].style.display='block';
+    $('#successScroll')[0].click();
+}
+
+function createPreview(data) {
+    //p means preview
+    var item = JSON.parse(JSON.parse(data).item);
+    $('#ptitle')[0].innerHTML = item.title;
+    if(item.location)
+      $('#plocation')[0].innerHTML = item.location;
+    $('#pcategory')[0].innerHTML = 'PC / accessories';
+    if(item.quantity)
+      $('#pquantity')[0].innerHTML = 'Items : ' + item.quantity;
+    if(item.price)
+      $('#pprice')[0].innerHTML = ' Total Price ' + item.price + ' ' + item.currency;
+    if(item.negotiable) {
+      $('#pprice')[0].innerHTML += ' (negotiable)';
+    }
+    $('#pdescription')[0].innerHTML = item.description;
+    if(item.type == 'rent' || item.type == 'share')
+      $('#pavailable')[0].innerHTML = 'Available for ' + item.type + ' for ' + item.duration + ' months';
+
+}
+function resetPostingForm() {
+    $('#sellingFormSection').find('input').val('');
+    $('#preview')[0].style.display='none';
+    $('#tips')[0].style.display='block';
+    $('#sellNow')[0].value = 'Post Now';
+    $('#postHead')[0].innerHTML = 'Post a Free Ad';
 }

@@ -14,6 +14,10 @@ use StareUp\Main\Bundle\Entity\Item;
  */
 class SellerController extends BaseController
 {
+
+    /** @DI\Inject("selling.service") */
+    public $sellingService;
+
     /**
      * @config\Route("/profile", name="seller_profile")
      * detail - This will return the seller profile
@@ -54,27 +58,32 @@ class SellerController extends BaseController
           $res['mesg'] = 'Not authorized for this.';
         }
         $sellingObj = $this->getPostRequestParam('sellingObj');
-        $array = json_decode($sellingObj, true);
-        if($array) {
-            $array['userId'] = 1231;
-            $item = $this->getItemObjectFromArray($array);
-        }
-        if($item) {
-          $em = $this->getDoctrine()->getManager();
-
-          // tells Doctrine you want to (eventually) save the Product (no queries yet)
-          $em->persist($item);
-          // actually executes the queries (i.e. the INSERT query)
-          $em->flush();
-          $res['status'] = true;
-          $res['code'] = 200;
-          $res['data'] = $item->getId();
-          $res['mesg'] = "Your item is posted successfully.";
-
+        $sellingArray = json_decode($sellingObj, true);
+        if($sellingArray) {
+            $sellingArray['userId'] = 1231;
+            //$item = $this->getItemObjectFromArray($sellingArray);
+            /*$em = $this->getDoctrine()->getManager();
+            $array['id'] = $item->getId();
+            // tells Doctrine you want to (eventually) save the Product (no queries yet)
+            $em->persist($item);
+            // actually executes the queries (i.e. the INSERT query)
+            $em->flush();*/
+            $items = $this->sellingService->saveItem($sellingArray);
+            if($items) {
+              $res['status'] = true;
+              $res['code'] = 200;
+              $res['item'] = json_encode($array);
+              $res['mesg'] = "Your item is posted successfully.";
+            } else {
+              $res['status'] = false;
+              $res['code'] = 400;
+              $res['item'] = false;
+              $res['mesg'] = "Unable to save, try again!";
+            }
         } else {
             $res['status'] = false;
             $res['code'] = 406;
-            $res['data'] = false;
+            $res['item'] = false;
             $res['mesg'] = 'Not a valid Object';
         }
 

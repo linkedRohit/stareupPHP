@@ -79,3 +79,9 @@ parameters:
                 keys:
                     id: 516116908563932
                     secret: 889173fcaf894e152096c9c7627b8faf
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [StareUpMainBundle]
+        directories: ["%kernel.root_dir%/../src"]

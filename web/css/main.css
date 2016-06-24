@@ -4093,13 +4093,13 @@ input:hover:after {
 
 #successToast{
 	position: fixed;
-	bottom: 50px;
+	top: 20px;
 	left: 50%;
-	width: 250px;
+	width: 300px;
 	margin-left: -125px;
 	z-index: 2;
 	border: 1px solid #666;
-	background-color: #6FC5A2;
+	background-color: #6FC5A1;
 	padding: 10px 0;
 	text-align: center;
 	opacity: 0;
@@ -4111,4 +4111,26 @@ input:hover:after {
 	-ms-transition: opacity 0.5s ease-out;
 	-o-transition: opacity 0.5s ease-out;
 	transition: opacity 0.5s ease-out;
+}
+
+.anchorButton{
+	background: #5B7DC5;
+	border-radius: 5px;
+	padding: 11px 50px;
+	color: white;
+}
+
+/*Post classes*/
+
+.title {
+  font-size: 16px;
+  color: #D69F32;
+}
+
+.category {
+		background: green;
+    color: white;
+    font-size: 12px;
+    padding: 4px;
+    border-radius: 2px;
 }

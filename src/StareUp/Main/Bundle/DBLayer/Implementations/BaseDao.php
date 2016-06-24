@@ -1,35 +1,36 @@
 <?php
-namespace Naukri\ReferralBundle\Dao\ncPDO;
+namespace StareUp\Main\Bundle\DBLayer\Implementations;
 
 use JMS\DiExtraBundle\Annotation as DI;
-use Naukri\ReferralBundle\Dao\BaseDao;
-use Naukri\ReferralBundle\Dao\ncPDO\DBConnectionFactoryNcPDO;
+use StareUp\Main\Bundle\DBLayer\Interfaces\iBaseDao;
 use PDOException;
-use Naukri\ReferralBundle\Util\Exceptions\DBConnectionException;
-use Naukri\ReferralBundle\Util\Exceptions\DBException;
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+use PDO;
 
 /**
- * Description of BaseDaoNcPDO
+ * Description of BaseDao
  *
- * @author Arpit
+ * @author Rohit Sharma
  */
+
 /**
  * @DI\Service("base.dao", public=true, abstract=true)
  */
-abstract class BaseDaoNcPDO implements BaseDao {
-
-
-    /**
+abstract class BaseDao implements iBaseDao {
+    /*
      * Gets a sharded DB connection based on the client id and the db tag (wrt the dao)
      * @param type $clientId
      * @return PDO connection
      */
         function getConnection() {
-            return DBConnectionFactoryNcPDO::getInstance()->getReferralDBConnection();
+	       $dsn = 'mysql:host=localhost;dbname=stareup';
+		$username = 'stareup';
+		$password = 'stareup789*';
+		$options = array(
+		    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+		);
+
+		$db = new PDO($dsn, $username, $password, $options);
+	        return $db;
         }
     }
 ?>

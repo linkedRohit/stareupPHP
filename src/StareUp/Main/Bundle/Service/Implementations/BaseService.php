@@ -1,5 +1,5 @@
 <?php
-namespace StareUp\Main\Bundle\Service;
+namespace StareUp\Main\Bundle\Service\Implementations;
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -11,13 +11,15 @@ namespace StareUp\Main\Bundle\Service;
  * @author Rohit Sharma
  */
 
-use StareUp\Main\Bundle\Service\iBase;
+use StareUp\Main\Bundle\Service\Interfaces\iBase;
 use JMS\DiExtraBundle\Annotation as DI;
 
 /**
  * @DI\Service("base.service", abstract=true)
  */
-abstract class BaseService implements iBase{
+abstract class BaseService implements iBase
+{
+
 }
 
 ?>

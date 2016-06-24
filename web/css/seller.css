@@ -38,6 +38,26 @@
   margin-top : 10px;
 }
 
+.sellingTips li {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.preview {
+    display: none;
+    color: #555;
+}
+
+.previewSkeleton {
+    display: block;
+    background: white;
+    border-radius: 5px;
+    padding: 15px;
+    color: #666;
+    text-align: left;
+    font-size: 14px;
+}
+
 @media screen and (max-width: 1680px) {
 }
 
@@ -62,22 +82,8 @@
   .sellingTips {
     margin-top: 50px;
   }
-}
 
-.sellingTips li {
-  margin-top: 15px;
-  text-align: left;
-}
-
-.preview {
-    display: none;
-    color: #555;
-}
-
-.previewSkeleton {
-    display: block;
-    background: white;
-    border-radius: 5px;
-    padding: 15px;
-    color: #666;
+  .preview {
+    margin-top:20px;
+  }
 }

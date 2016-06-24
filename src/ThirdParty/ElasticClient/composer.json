@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ruflin/Elastica": "3.2.0"
+    }
+
+}

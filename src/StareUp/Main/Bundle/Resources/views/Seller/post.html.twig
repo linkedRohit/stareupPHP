@@ -12,8 +12,8 @@
     <div class="row">
       <div class="12u">
         <!-- Form -->
-        <section class="box 8u 12u(narrower) bkg fl">
-          <h3>Post a Free Ad</h3>
+        <section class="box 8u 12u(narrower) bkg fl" id="sellingFormSection">
+          <h3 id="postHead">Post a Free Ad</h3>
             <input type="hidden" name="_csrf" value="123123" id="_csrf" />
             <input type="hidden" name="images" value="{123, 1232, 986}" id="images" />
             <div class="row uniform 50%">
@@ -116,6 +116,7 @@
                 <ul class="actions">
                   <li>
                     <input type="button" value="Sell now" id="sellNow" onClick="validateAndSave(this);">
+                    <a href="#preview" id="successScroll"></a>
                   </li>
                   <li>
                     <input type="reset" value="Reset" id="reset" class="alt" onclick="resetForms();">
@@ -144,11 +145,16 @@
         <section class="box 4u 12u(narrower) sellingTips bkg preview" id="preview">
             <h3>Post Preview</h3>
             <div class="previewSkeleton">
-                asdkas askdj asdkj asdkja alsdjaskl alskdja alksdj z
+                <span class="title" id="ptitle"></span><br/>
+                <span class="category" id="pcategory"></span><br/>
+                <span class="quantity" id="pquantity"></span> <span class="price" id="pprice"></span><br/>
+                <span class="fa fa-location" id="plocation"> </span><br/>
+                <span id="pavailable"></span><br/>
+                <span id="pdescription"></span>
             </div>
             <ul class="actions">
               <li>
-                <input type="button" value="One more ?" id="editPost">
+                <a href="#sellingFormSection" class="anchorButton" id="editPost" style="display:none;" onclick="resetPostingForm();">Post one more?</a>
               </li>
             </ul>
         </section>
@@ -223,7 +229,5 @@
   };
 
 </script>
-<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-<script src="{{ asset('js/jquery.geocomplete.js') }}"></script>
 
 {% endblock %}
