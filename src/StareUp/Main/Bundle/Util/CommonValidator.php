@@ -41,6 +41,7 @@ class CommonValidator {
     }
     
     public function validateItem($itemArray) {
+	return true;
         $success = true;
         $error = $this->validateTitle($itemArray['title']);
         if($error !== true) {
