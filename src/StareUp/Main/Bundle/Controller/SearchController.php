@@ -29,7 +29,7 @@ class SearchController extends BaseController
     {
         $limit = 20;
         $params = $this->getRequest()->query->all();
-        $this->sellingService->getItem(1);
+        $items = $this->sellingService->getItem(1);
         //Will implement elastic here.
         //Right now just mysql search
         /*$em = $this->getDoctrine()->getManager();
@@ -42,7 +42,7 @@ class SearchController extends BaseController
         var_dump($count);die;*/
         //$em->persist($item);
         //$em->flush();
-        return new Response(1);
-
+	return $this->render("StareUpMainBundle:Search:search.html.twig", array('items'=> $items));
+        //return new Response(json_encode($items));
     }
 }

@@ -26,7 +26,7 @@ class SellingService extends BaseService implements iSelling
     }
 
     public function getItem($id) {
-        $this->sellingDao->getItem($id);
+        return $this->sellingDao->getItem($id);
     }
 }
 

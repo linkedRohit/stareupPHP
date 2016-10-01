@@ -25,7 +25,6 @@ class SellingDao extends BaseDao implements iSellingDao
 //            $prepQuery->bindValue(':companyId',$companyId,PDO::PARAM_INT);
             $prepQuery->execute();
            $a = $prepQuery->fetchAll(PDO::FETCH_ASSOC);
-var_dump($a);die;
 
         } catch (Exception $ex) {
 
@@ -41,23 +40,12 @@ var_dump($a);die;
                          SELECT title
                            FROM items where id = {$id}
                      ";
-
-                 $em = $this->getDoctrine()->getManager();
-                 $stmt = $em->getConnection()->prepare($sql);
+		 
+                 //$em = $this->getDoctrine()->getManager();
+                 $stmt = $this->getConnection()->prepare($sql);
                  $stmt->execute();
-                 $item = $stmt->fetchAll();
-                 var_dump($item);die;
-
-            /*$db = $this->getConnection();
-
-
-            $selectQuery = "select levelId , points ,levelName  from levelSettings where  companyId = :companyId and deleted = 'N' and disabled = 'N'" ;
-
-            $prepQuery = $db->prepare($selectQuery);
-
-            $prepQuery->bindValue(':companyId',$companyId,PDO::PARAM_INT);
-            $prepQuery->execute();
-           return $prepQuery->fetchAll(PDO::FETCH_ASSOC);*/
+                 $items = $stmt->fetchAll();
+		 return $items;
 
         } catch (Exception $ex) {
 
